@@ -1,1 +1,4 @@
-<p>App works!</p>
+<app-header (ShowEvent)="onShowEvent()" (Find)="onFind($event)"></app-header>
+<app-filters *ngIf="showBlock" (Filter)="onFilter($event)" (Sort)="onSortByViews($event)" ></app-filters>
+<app-search-result *ngIf="searchCards" [cards]="cards" [search]="search" [isDesc]="isDesc" [searchStr]="searchStr"></app-search-result>
+

@@ -1,1 +1,12 @@
-<p>header works!</p>
+<div class="wrapper">
+    <div class="header_main">
+        <img class="header_logo" src="assets/icons/logo.png" alt="logo">
+        <form class="header_search">
+            <input class="search_input" type="text" name="search_input" [(ngModel)]="searchCards" placeholder="What are you want to find out?">
+            <button type="button" class="submit" (click)="Find.emit(searchCards)">search</button>
+        </form >
+        <button class="search_btn" (click)="ShowEvent.emit()"><img   src="assets/icons/search_settings.png" alt="search"></button>
+    </div>
+    <app-login></app-login>
+</div>
+

@@ -1,1 +1,1 @@
-<p>search-result works!</p>
+<app-search-item  *ngFor="let card of (cards| SearchPipe :searchStr  | SortByViews : isDesc : search | SortByDate : isDesc : search )" [card]="card"></app-search-item>

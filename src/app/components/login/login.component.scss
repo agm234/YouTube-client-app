@@ -1,0 +1,23 @@
+:host {
+    display: flex;
+    align-self: center;
+}
+.wrapper_login {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: 134px;
+    height: 24px;
+}
+.name {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: right;
+    color: #4f4f4f;
+    margin-right: 8px;
+    cursor: default;
+}

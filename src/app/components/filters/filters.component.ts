@@ -1,4 +1,6 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import {
+  ChangeDetectionStrategy, Component, EventEmitter, Output,
+} from '@angular/core';
 
 @Component({
   selector: 'app-filters',
@@ -7,5 +9,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FiltersComponent {
+  searchStr = '';
 
+  @Output() Filter = new EventEmitter<string>();
+
+  @Output() Sort = new EventEmitter<string>();
 }

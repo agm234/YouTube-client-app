@@ -1,4 +1,6 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import {
+  ChangeDetectionStrategy, Component, EventEmitter, Output,
+} from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,5 +9,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
+  searchCards = '';
 
+  @Output() ShowEvent = new EventEmitter<boolean>();
+
+  @Output() Find = new EventEmitter<string>();
 }

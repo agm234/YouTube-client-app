@@ -1,4 +1,6 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+
+import { ISearchItem } from '../../models/search-item-model';
 
 @Component({
   selector: 'app-search-item',
@@ -7,5 +9,5 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchItemComponent {
-
+  @Input() card?: ISearchItem;
 }

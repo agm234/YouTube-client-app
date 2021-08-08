@@ -3,7 +3,7 @@ export interface ISearchItem {
   etag: string;
   id: string;
   snippet: ISnippet;
-  statistics: { [key: string]: string }
+  statistics: Istatistics;
 }
 interface ISnippet {
   publishedAt: string;
@@ -21,6 +21,7 @@ interface ISnippet {
   tags: string[];
   categoryId: string;
   liveBroadcastContent: string;
+  defaultLanguage?: string,
   localized: ILocalizedItem;
   defaultAudioLanguage: string;
 }
@@ -32,4 +33,11 @@ interface IThumbnailsItem {
 interface ILocalizedItem {
   title: string;
   description: string;
+}
+interface Istatistics{
+  viewCount: string;
+  likeCount: string;
+  dislikeCount: string;
+  favoriteCount: string;
+  commentCount: string;
 }
