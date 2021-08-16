@@ -1,0 +1,66 @@
+:host {
+    display: block;
+    width: 100%;
+    height: 50px;
+    background-color: #e5e5e5;
+    display: flex;
+    align-items: center;
+}
+.filter_wrapper {
+    margin-left: 30%;
+    width: 479px;
+    height: 14px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.filter_text {
+    width: 57px;
+    height: 14px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    color: #929292;
+    cursor: default;
+}
+.filter_search_text {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    color: #2f80ed;
+    cursor: default;
+}
+.filter_btn {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    text-decoration-line: underline;
+    color: #2f80ed;
+    padding: 0;
+    min-width: 0;
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+}
+.data {
+    width: 26px;
+}
+.views {
+    width: 108px;
+}
+.filter_search {
+    width: 149px;
+    height: 14px;
+    border: none;
+    outline: none;
+}
+input[type="search"]::-webkit-search-cancel-button {
+    cursor: pointer;
+}

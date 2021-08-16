@@ -1,0 +1,4 @@
+<form class="header_search">
+    <input class="search_input" type="text" name="search_input" [(ngModel)]="searchCards" placeholder="What are you want to find out?">
+    <button type="button" class="submit" (click)="Find.emit(searchCards)">search</button>
+</form >

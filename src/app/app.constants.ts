@@ -1,4 +1,4 @@
-import { ISearchResult } from './models/search-result-model';
+import { ISearchResult } from './youtube/models/search-result-model';
 
 export const SearchData: ISearchResult = {
   kind: 'youtube#videoListResponse',

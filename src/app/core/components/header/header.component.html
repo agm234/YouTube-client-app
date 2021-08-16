@@ -1,0 +1,11 @@
+<div class="wrapper">
+    <div class="header_main">
+        <img class="header_logo" src="assets/icons/logo.png" alt="logo">
+        <app-search-bar (Find)="onFind($event)"></app-search-bar>
+        <button class="search_btn" (click)="showBlock=!showBlock"><img   src="assets/icons/search_settings.png" alt="search"></button>
+    </div>
+    <app-login (click)="logout()"></app-login>
+</div>
+<app-filters *ngIf="showBlock"></app-filters>
+
+

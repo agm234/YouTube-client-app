@@ -1,0 +1,40 @@
+.header_search {
+    width: 476px;
+    height: 24px;
+    display: flex;
+    flex-direction: row;
+}
+.search_input {
+    width: 396px;
+    height: 24px;
+    background: #efefef;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    color: #333333;
+    border: none;
+    padding: 0;
+    outline: none;
+}
+.submit {
+    height: 24px;
+    width: 80px;
+    background: #2f80ed;
+    border: none;
+    border-radius: 0px 4px 4px 0px;
+    font-family: "Roboto";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 14px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    cursor: pointer;
+}

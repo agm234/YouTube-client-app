@@ -1,0 +1,30 @@
+:host {
+    display: block;
+    width: 100%;
+    background-color: #e5e5e5;
+}
+.wrapper {
+    width: 852px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 30%;
+    margin-right: 11%;
+    background-color: #e5e5e5;
+}
+.header_main {
+    width: 570px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search_btn {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    border: none;
+    padding: 0;
+}
