@@ -7,10 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'YouTubeClientApp';
-
-  searchStr:string;
-
-  constructor() {
-    this.searchStr = '';
-  }
 }
