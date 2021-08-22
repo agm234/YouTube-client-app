@@ -19,8 +19,8 @@ export class SortByDate implements PipeTransform {
 
   sort(value: ISearchItem[] | null, isDesc:boolean) {
     const sortedValue = (value as ISearchItem[]).sort((val1:ISearchItem, val2:ISearchItem) => {
-      const dateOne = +new Date(val1.snippet.publishedAt);
-      const dateTwo = +new Date(val2.snippet.publishedAt);
+      const dateOne = new Date(val1.snippet.publishedAt).getTime();
+      const dateTwo = new Date(val2.snippet.publishedAt).getTime();
       return dateOne - dateTwo;
     });
     if (isDesc) {

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
-import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 import { ISearchItem } from '../../models/search-item-model';
 import { SortdataService } from '../../services/sortdata.service';
@@ -14,25 +14,25 @@ import { SortdataService } from '../../services/sortdata.service';
 export class SearchResultComponent implements OnInit {
   isDesc: boolean = false;
 
-  search?: string;
+  filter: string;
 
   searchStr?: string;
 
-  cards$: Observable<ISearchItem[] | null> = new BehaviorSubject([]);
+  cards$?: Observable<ISearchItem[]>;
 
   cardsSubscription!: Subscription
   ;
 
   constructor(private sortdataService: SortdataService) {
-    this.search = '';
+    this.filter = '';
     this.isDesc = false;
     this.searchStr = '';
   }
 
   ngOnInit(): void {
     this.cards$ = this.sortdataService.items$;
-    this.cardsSubscription = this.sortdataService.search$.subscribe((data) => {
-      this.search = data;
+    this.cardsSubscription = this.sortdataService.filter$.subscribe((data) => {
+      this.filter = data;
       this.sortdataService.getCards();
     });
     this.cardsSubscription = this.sortdataService.isDesc$.subscribe((data) => {

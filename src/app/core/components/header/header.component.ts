@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { SortdataService } from 'src/app/youtube/services/sortdata.service';
 
@@ -14,17 +13,11 @@ export class HeaderComponent {
 
   showBlock = false;
 
-  constructor(private search:SortdataService, private rout:Router) {
+  constructor(private search:SortdataService) {
     this.searchCards = '';
   }
 
   onFind(searchCards:string) {
     this.search.setStr(searchCards);
-  }
-
-  logout() {
-    localStorage.clear();
-    this.rout.navigate(['login']);
-    this.showBlock = false;
   }
 }

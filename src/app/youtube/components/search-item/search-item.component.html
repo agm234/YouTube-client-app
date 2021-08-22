@@ -4,19 +4,19 @@
         <div class="statistic">
             <div class="statistic_item">
                 <img src="assets/icons/viewed.png" alt="viewed">
-                <span>{{card?.statistics?.viewCount}}</span>
+                <span >{{card?.statistics?.viewCount | views}}</span>
             </div>
             <div class="statistic_item">
                 <img src="assets/icons/liked.png" alt="liked">
-                <span>{{card?.statistics?.likeCount}}</span>
+                <span >{{card?.statistics?.likeCount|views}}</span>
             </div>
             <div class="statistic_item">
                 <img src="assets/icons/dislike.png" alt="dislike">
-                <span>{{card?.statistics?.dislikeCount}}</span>
+                <span >{{card?.statistics?.dislikeCount|views}}</span>
             </div>
             <div class="statistic_item">
                 <img src="assets/icons/comment.png" alt="comment">
-                <span>{{card?.statistics?.commentCount}}</span>
+                <span >{{card?.statistics?.commentCount|views}}</span>
             </div>
         </div>
         <div class="card_title">
@@ -26,5 +26,5 @@
     <mat-card-actions>
       <button mat-raised-button class="card_btn" (click)="nav(card.id)">more...</button>
     </mat-card-actions>
-    <div appCardMarkerColor [Date]="card.snippet.publishedAt" class="indicator"></div>
+    <div appCardMarkerColor [date]="card.snippet.publishedAt" class="indicator"></div>
   </mat-card>

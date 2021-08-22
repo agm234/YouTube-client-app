@@ -8,7 +8,7 @@ import {
 export class CardMarkerColorDirective implements OnInit {
   colorClass = '';
 
-  @Input() Date?:string;
+  @Input() date?:string;
 
   constructor(private elementref: ElementRef,
     private renderer: Renderer2) {
@@ -20,7 +20,7 @@ export class CardMarkerColorDirective implements OnInit {
   }
 
   defineColor() {
-    const date = new Date(this.Date as string).getTime();
+    const date = new Date(this.date as string).getTime();
     this.colorClass = this.colorSelection(date);
   }
 
@@ -39,6 +39,6 @@ export class CardMarkerColorDirective implements OnInit {
     if (date > this.sevenDaysPassedTime()) return 'blue';
     if (date > this.getTimeMonthsPassed(1)) return 'green';
     if (date < this.getTimeMonthsPassed(6)) return 'red';
-    return '';
+    return 'yellow';
   }
 }

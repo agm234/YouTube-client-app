@@ -1,6 +1,6 @@
 <div class="login-form-name">Login</div>
 
-<form (submit)="onSubmit($event)">
+<form [formGroup]="form" (submit)="onSubmit($event)">
   <div class="login-form-field">
     <label class="label">login</label>
     <input class="input" formControlName="username" type="text"  placeholder="Username" />
@@ -11,5 +11,5 @@
     <input class="input" formControlName="password" type="password"  placeholder="Password" />
   </div>
 
-  <button class="button"  type="submit">Login</button>
+  <button  class="button"  type="submit">Login</button>
 </form>

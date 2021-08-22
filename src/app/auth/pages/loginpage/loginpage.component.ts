@@ -10,7 +10,7 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./loginpage.component.scss'],
 })
 export class LoginpageComponent implements OnInit {
-  form ?:FormGroup;
+  form:FormGroup;
 
   constructor(private rout:Router, private auth:AuthService) {
     this.form = new FormGroup({
@@ -20,15 +20,16 @@ export class LoginpageComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.auth.Islogined()) {
+    if (this.auth.islogined()) {
       this.rout.navigate(['/home']);
     }
   }
 
-  public onSubmit(event: Event): void {
+  onSubmit(event: Event): void {
     event.preventDefault();
-    this.auth.login(this.form?.value);
-    if (this.auth.Islogined()) {
+    const isAuth:boolean = this.auth.login(this.form?.value);
+    if (isAuth) {
+      this.auth.isLogin$.next(true);
       this.rout.navigate(['/home']);
     }
   }

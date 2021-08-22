@@ -14,7 +14,7 @@ export class AuthLoadGuard implements CanLoad {
   }
 
   canLoad(): Observable<boolean> | Promise<boolean> | boolean {
-    const isauth = this.auth.Islogined();
+    const isauth = this.auth.islogined();
     if (isauth) {
       return true;
     }

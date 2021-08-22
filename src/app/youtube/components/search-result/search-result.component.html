@@ -1,3 +1,3 @@
-<app-search-item   *ngFor="let card of cards$| async | SearchPipe :searchStr | SortByViews : isDesc : search | SortByDate : isDesc : search "  [card]="card"></app-search-item>
+<app-search-item   *ngFor="let card of cards$| async | SearchPipe :searchStr | SortByViews : isDesc : filter | SortByDate : isDesc : filter "  [card]="card"></app-search-item>
 
 

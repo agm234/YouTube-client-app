@@ -2,8 +2,9 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+import { LoginComponent } from '../auth/components/login/login.component';
+import { SharedModule } from '../shared/shared.module';
 import { FiltersComponent } from '../youtube/components/filters/filters.component';
-import { LoginComponent } from './components/header/components/login/login.component';
 import { SearchBarComponent } from './components/header/components/search-bar/search-bar.component';
 import { HeaderComponent } from './components/header/header.component';
 
@@ -13,11 +14,11 @@ import { HeaderComponent } from './components/header/header.component';
     HeaderComponent,
     FiltersComponent,
     LoginComponent,
-
   ],
   imports: [
     CommonModule,
     FormsModule,
+    SharedModule,
   ],
   exports: [
     SearchBarComponent,

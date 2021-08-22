@@ -1,30 +1,34 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { BehaviorSubject, Subject } from 'rxjs';
-import { SearchData } from 'src/app/app.constants';
+import {
+  BehaviorSubject, Observable, of, Subject,
+} from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
+import { API_SEARCH_URL, API_VIDEO_URL } from 'src/app/app.constants';
 
 import { IVideosResponse } from '../models/response-model';
-import { ISearchItem } from '../models/search-item-model';
+import { IId, ISearchItem } from '../models/search-item-model';
 
-const { items } = SearchData;
 @Injectable({
   providedIn: 'root',
 })
 export class SortdataService {
   items$ = new BehaviorSubject<ISearchItem[]>([]);
 
-  private url = './assets/app-response.json';
-
-  str$ = new Subject<string>();
-
   search$ = new Subject<string>();
+
+  filter$ = new Subject<string>();
 
   isDesc$ = new Subject<boolean>();
 
   searchStr$ = new Subject<string>();
 
+  items?:ISearchItem[];
+
   str:string;
+
+  globalsearch?:string;
 
   isDesc:boolean;
 
@@ -35,33 +39,56 @@ export class SortdataService {
   constructor(private http: HttpClient) {
     this.str = '';
     this.isDesc = false;
-    this.getCards();
+    this.items = [];
   }
 
-  getCards() {
-    this.http.get<IVideosResponse>(this.url).subscribe((response) => {
-      this.response = response;
-      this.videos = response.items;
-      this.items$.next(this.videos);
-    });
+  getCards(str?:string) {
+    this.searchCardsByQuery((str as string || this.globalsearch as string))
+      .subscribe((videoIds: string[]) => this.getStatistics(videoIds)
+        .subscribe(({ items }: IVideosResponse<string>) => {
+          this.items = items;
+          this.items$.next(items);
+        }));
   }
 
-  gerCardById(id:string) {
-    return items.find((el) => el.id === id);
+  getCard(id:string) {
+    return this.getStatistics(id).pipe(switchMap((data:IVideosResponse<string>) => of(data.items[0])));
+  }
+
+  searchCardsByQuery(qeury:string) {
+    const params: any = {
+      type: 'video',
+      part: 'snippet',
+      maxResults: 15,
+      q: qeury,
+    };
+    return this.http.get < IVideosResponse<IId>>(API_SEARCH_URL, { params }).pipe(
+      map((data) => data.items.map(({ id }) => id.videoId)),
+    );
+  }
+
+  getStatistics(ids: string[] | string): Observable<any> {
+    const id = typeof ids === 'string' ? ids : ids.join(',');
+    const params: any = {
+      id,
+      part: 'snippet,statistics',
+    };
+
+    return this.http.get(API_VIDEO_URL, { params });
   }
 
   setStr(str:string) {
-    this.str$.next(str);
+    this.search$.next(str);
   }
 
-  setSearch(str:string, isDesc:boolean) {
+  setFilter(str:string, isDesc:boolean) {
     if (str !== undefined) {
       this.str = str;
     }
     if (isDesc !== undefined) {
       this.isDesc = isDesc;
     }
-    this.search$.next(this.str);
+    this.filter$.next(this.str);
     this.isDesc$.next(this.isDesc);
   }
 

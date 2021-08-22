@@ -2,9 +2,11 @@
     display: flex;
     padding: 0 50px;
     font-family: "Roboto", sans-serif;
+    margin-top: 44px;
+    height: 461px;
 
     &-img {
-        height: 350px;
+        height: 461px;
         width: 50%;
         position: relative;
 
@@ -47,6 +49,10 @@
             color: #000;
             margin-bottom: 10px;
         }
+        &-text {
+            max-height: 270px;
+            overflow-y: auto;
+        }
     }
 
     &-statistic {
@@ -75,8 +81,8 @@
 
     &-back {
         position: absolute;
-        top: -2px;
-        left: -38px;
+        top: -0px;
+        left: -31px;
         cursor: pointer;
     }
 
@@ -101,4 +107,11 @@
 }
 .green {
     background-color: green;
+}
+::-webkit-scrollbar {
+    width: 0px;
+}
+::-webkit-scrollbar-track-piece {
+    background-color: transparent;
+    -webkit-border-radius: 6px;
 }

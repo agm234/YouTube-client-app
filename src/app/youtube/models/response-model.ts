@@ -1,10 +1,10 @@
 import { ISearchItem } from './search-item-model';
 
-export interface IVideosResponse {
+export interface IVideosResponse<A=string> {
   kind: string
   etag: string
   pageInfo: IPageInfo
-  items: ISearchItem[]
+  items: ISearchItem<A>[]
 }
 
 interface IPageInfo {

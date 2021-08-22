@@ -8,5 +8,5 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class SearchBarComponent {
   searchCards = '';
 
-  @Output() Find = new EventEmitter<string>();
+  @Output() find = new EventEmitter<string>();
 }

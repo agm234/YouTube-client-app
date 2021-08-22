@@ -28,7 +28,7 @@ export class FiltersComponent {
   onSort(search:string) {
     this.isDesc = !this.isDesc;
     this.search = search;
-    this.sortdataService.setSearch(this.search, this.isDesc);
+    this.sortdataService.setFilter(this.search, this.isDesc);
   }
 
   onFilter(searchStr:string) {

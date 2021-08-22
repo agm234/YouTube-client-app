@@ -6,12 +6,13 @@ import { SearchItemComponent } from './components/search-item/search-item.compon
 import { SearchResultComponent } from './components/search-result/search-result.component';
 import { CardMarkerColorDirective } from './directives/card-marker-color.directive';
 import { DetailsComponent } from './pages/details/details.component';
+import { HomeComponent } from './pages/home/home.component';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { SearchPipe } from './pipes/search.pipe';
 import { SortByDate } from './pipes/sortByDate.pipe';
 import { SortByViews } from './pipes/sortByViews.pipe';
 import { YoutubeRoutingModule } from './youtube-routing.module';
-import { HomeComponent } from './pages/home/home.component';
+import { ViewsPipe } from './pipes/views.pipe';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { HomeComponent } from './pages/home/home.component';
     DetailsComponent,
     NotfoundComponent,
     HomeComponent,
+    ViewsPipe,
   ],
   imports: [
     CommonModule,

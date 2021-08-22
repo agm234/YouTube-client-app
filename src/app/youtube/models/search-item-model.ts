@@ -1,9 +1,13 @@
-export interface ISearchItem {
+export interface ISearchItem<A=string> {
   kind: string;
   etag: string;
-  id: string;
+  id: A;
   snippet: ISnippet;
   statistics: Istatistics;
+}
+export interface IId{
+  kind: string;
+  videoId: string;
 }
 interface ISnippet {
   publishedAt: string;

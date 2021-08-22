@@ -15,7 +15,9 @@ export class DetailsComponent {
 
   constructor(public routed:ActivatedRoute, private rout:Router, private sortdata:SortdataService) {
     this.routed.params.subscribe(({ id }) => {
-      this.card = this.sortdata.gerCardById(id);
+      sortdata.getCard(id).subscribe((data) => {
+        this.card = data;
+      });
     });
   }
 

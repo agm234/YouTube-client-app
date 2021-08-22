@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 
+import { BehaviorSubject } from 'rxjs';
+
 import { IUser } from '../models/user-model';
 
 export const AUTH_KEY = 'AUTH';
@@ -7,17 +9,30 @@ export const AUTH_KEY = 'AUTH';
   providedIn: 'root',
 })
 export class AuthService {
-  login(user:IUser) :boolean {
+  isLogin$ = new BehaviorSubject<boolean>(this.islogined());
+
+  username?:string;
+
+  login(user:IUser) {
     if (user) {
-      localStorage.setItem(AUTH_KEY, JSON.stringify(true));
+      localStorage.setItem(AUTH_KEY, JSON.stringify(Math.random().toString(16)));
+      this.isLogin$.next(true);
+      this.username = user.username;
       return true;
     }
     localStorage.removeItem(AUTH_KEY);
     return false;
   }
 
-  Islogined():boolean {
+  islogined():boolean {
     const key = localStorage.getItem(AUTH_KEY);
-    return Boolean(key);
+    if (key !== null && key.length > 0) return true;
+
+    return false;
+  }
+
+  logout() {
+    localStorage.removeItem(AUTH_KEY);
+    this.isLogin$.next(false);
   }
 }

@@ -18,22 +18,22 @@
       <div class="card-details-statistic">
         <div class="card-details-statistic-card">
           <img class="card-details-statistic__icon" src="../../../../assets/icons/viewed.png" />
-          <span class="card-details-statistic__value">{{card?.statistics?.viewCount}}</span>
+          <span class="card-details-statistic__value">{{card?.statistics?.viewCount|views}}</span>
         </div>
         <div class="card-details-statistic-card">
           <img class="card-details-statistic__icon" src="../../../../assets/icons/liked.png" />
-          <span class="card-details-statistic__value">{{card?.statistics?.likeCount}}</span>
+          <span class="card-details-statistic__value">{{card?.statistics?.likeCount|views}}</span>
         </div>
         <div class="ccard-details-statistic-card">
           <img class="card-details-statistic__icon" src="../../../../assets/icons/dislike.png" />
-          <span class="card-details-statistic__value">{{card?.statistics?.dislikeCount}}</span>
+          <span class="card-details-statistic__value">{{card?.statistics?.dislikeCount|views}}</span>
         </div>
         <div class="card-details-statistic-card">
           <img class="card-details-statistic__icon" src="../../../../assets/icons/comment.png" />
-          <span class="card-details-statistic__value">{{card?.statistics?.commentCount}}</span>
+          <span class="card-details-statistic__value">{{card?.statistics?.commentCount|views}}</span>
         </div>
       </div>
 
-      <div appCardMarkerColor [Date]="card?.snippet?.publishedAt" class="card-details-footer"></div>
+      <div appCardMarkerColor [date]="card?.snippet?.publishedAt" class="card-details-footer"></div>
     </div>
   </div>
