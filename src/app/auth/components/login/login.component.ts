@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { BehaviorSubject, Subscription } from 'rxjs';
@@ -11,30 +11,32 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./login.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoginComponent implements OnInit {
-  islogined? = new BehaviorSubject<boolean>(false);
+export class LoginComponent implements OnInit, OnDestroy {
+  isLogined? = new BehaviorSubject<boolean>(false);
 
-  videosSubscription!: Subscription
-  ;
+  subscription?:Subscription;
 
-  username?:string;
-
-  constructor(private rout:Router, private auth:AuthService) {
+  constructor(private router:Router, private auth:AuthService) {
   }
 
   ngOnInit() {
-    this.videosSubscription = this.auth.isLogin$.subscribe((data) => {
-      this.islogined?.next(data);
-      this.username = this.auth.username;
+    this.subscription = this.auth.isLogin$.subscribe((data) => {
+      this.isLogined?.next(data);
     });
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
   onLogout() {
     this.auth.logout();
-    this.rout.navigate(['login']);
+    this.router.navigate(['login']);
   }
 
   onLogin() {
-    this.rout.navigate(['login']);
+    this.router.navigate(['login']);
   }
 }

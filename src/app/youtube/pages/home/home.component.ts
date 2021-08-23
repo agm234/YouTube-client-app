@@ -1,33 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { interval, Subscription } from 'rxjs';
 import { debounce } from 'rxjs/operators';
 
-import { SortdataService } from '../../services/sortdata.service';
+import { SortDataService } from '../../services/sortdata.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
-  videosSubscription!: Subscription
-  ;
+export class HomeComponent implements OnInit, OnDestroy {
+  isSearch:boolean = false;
 
-  issearch:boolean = false;
+  subscription?:Subscription;
 
-  constructor(private sortdataService:SortdataService) {
+  constructor(private sortDataService:SortDataService) {
   }
 
   ngOnInit() {
-    this.videosSubscription = this.sortdataService.search$.pipe(debounce(() => interval(500))).subscribe((data) => {
+    this.subscription = this.sortDataService.search$.pipe(debounce(() => interval(500))).subscribe((data) => {
       if (data.length < 3) {
-        this.issearch = false;
+        this.isSearch = !data.length;
       } else {
-        this.sortdataService.getCards(data);
-        this.sortdataService.globalsearch = data;
-        this.issearch = true;
+        this.sortDataService.getCards(data);
+        this.sortDataService.globalsearch = data;
+        this.isSearch = true;
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }

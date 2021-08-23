@@ -9,17 +9,18 @@ import { AuthService } from '../services/auth.service';
   providedIn: 'root',
 })
 export class AuthLoadGuard implements CanLoad {
-  constructor(private rout:Router, private auth:AuthService) {
+  login:string = this.auth.loginNavigate;
 
+  constructor(private router:Router, private auth:AuthService) {
   }
 
   canLoad(): Observable<boolean> | Promise<boolean> | boolean {
-    const isauth = this.auth.islogined();
-    if (isauth) {
+    const isAuth = this.auth.isLogined();
+    if (isAuth) {
       return true;
     }
 
-    this.rout.navigate(['/login']);
+    this.router.navigate([this.login]);
     return false;
   }
 }

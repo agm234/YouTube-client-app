@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AuthLoadGuard } from './auth/guard/auth-load.guard';
-import { AuthGuard } from './auth/guard/auth.guard';
 import { NotfoundComponent } from './youtube/pages/notfound/notfound.component';
 
 const routes:Routes = [
@@ -24,7 +23,6 @@ const routes:Routes = [
   {
     path: '**',
     component: NotfoundComponent,
-    canActivate: [AuthGuard],
   },
 ];
 

@@ -1,9 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 
 import { Observable, Subscription } from 'rxjs';
 
 import { ISearchItem } from '../../models/search-item-model';
-import { SortdataService } from '../../services/sortdata.service';
+import { SortDataService } from '../../services/sortdata.service';
 
 @Component({
   selector: 'app-search-result',
@@ -11,36 +11,48 @@ import { SortdataService } from '../../services/sortdata.service';
   styleUrls: ['./search-result.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SearchResultComponent implements OnInit {
+export class SearchResultComponent implements OnInit, OnDestroy {
   isDesc: boolean = false;
 
-  filter: string;
+  filter: string = '';
 
-  searchStr?: string;
+  searchStr: string = '';
+
+  filterSubscription?:Subscription;
+
+  isDescSubscription?:Subscription;
+
+  searchStrSubscription?:Subscription;
 
   cards$?: Observable<ISearchItem[]>;
 
-  cardsSubscription!: Subscription
-  ;
-
-  constructor(private sortdataService: SortdataService) {
-    this.filter = '';
-    this.isDesc = false;
-    this.searchStr = '';
+  constructor(private sortDataService: SortDataService) {
   }
 
   ngOnInit(): void {
-    this.cards$ = this.sortdataService.items$;
-    this.cardsSubscription = this.sortdataService.filter$.subscribe((data) => {
+    this.cards$ = this.sortDataService.items$;
+    this.filterSubscription = this.sortDataService.filter$.subscribe((data) => {
       this.filter = data;
-      this.sortdataService.getCards();
+      this.sortDataService.getCards();
     });
-    this.cardsSubscription = this.sortdataService.isDesc$.subscribe((data) => {
+    this.isDescSubscription = this.sortDataService.isDesc$.subscribe((data) => {
       this.isDesc = data;
     });
-    this.cardsSubscription = this.sortdataService.searchStr$.subscribe((data) => {
+    this.searchStrSubscription = this.sortDataService.searchStr$.subscribe((data) => {
       this.searchStr = data;
-      this.sortdataService.getCards();
+      this.sortDataService.getCards();
     });
+  }
+
+  ngOnDestroy(): void {
+    if (this.filterSubscription) {
+      this.filterSubscription.unsubscribe();
+    }
+    if (this.isDescSubscription) {
+      this.isDescSubscription.unsubscribe();
+    }
+    if (this.isDescSubscription) {
+      this.isDescSubscription.unsubscribe();
+    }
   }
 }

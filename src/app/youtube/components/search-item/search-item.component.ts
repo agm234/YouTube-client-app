@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ISearchItem } from '../../models/search-item-model';
-import { SortdataService } from '../../services/sortdata.service';
 
 @Component({
   selector: 'app-search-item',
@@ -13,10 +12,10 @@ import { SortdataService } from '../../services/sortdata.service';
 export class SearchItemComponent {
   @Input() card?: ISearchItem;
 
-  constructor(private rout:Router, private sortdataService:SortdataService) {
+  constructor(private router:Router) {
   }
 
   nav(id:string) {
-    this.rout.navigate(['details', id]);
+    this.router.navigate(['details', id]);
   }
 }

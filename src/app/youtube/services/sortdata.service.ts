@@ -1,9 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import {
-  BehaviorSubject, Observable, of, Subject,
-} from 'rxjs';
+import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { API_SEARCH_URL, API_VIDEO_URL } from 'src/app/app.constants';
 
@@ -13,7 +11,7 @@ import { IId, ISearchItem } from '../models/search-item-model';
 @Injectable({
   providedIn: 'root',
 })
-export class SortdataService {
+export class SortDataService {
   items$ = new BehaviorSubject<ISearchItem[]>([]);
 
   search$ = new Subject<string>();
@@ -24,22 +22,20 @@ export class SortdataService {
 
   searchStr$ = new Subject<string>();
 
-  items?:ISearchItem[];
+  items:ISearchItem[] = [];
 
-  str:string;
+  str?:string;
 
   globalsearch?:string;
 
-  isDesc:boolean;
+  isDesc:boolean = false;
 
   videos ?:ISearchItem[];
 
   response?: IVideosResponse;
 
   constructor(private http: HttpClient) {
-    this.str = '';
-    this.isDesc = false;
-    this.items = [];
+
   }
 
   getCards(str?:string) {

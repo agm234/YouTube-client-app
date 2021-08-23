@@ -9,10 +9,10 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './loginpage.component.html',
   styleUrls: ['./loginpage.component.scss'],
 })
-export class LoginpageComponent implements OnInit {
+export class LoginPageComponent implements OnInit {
   form:FormGroup;
 
-  constructor(private rout:Router, private auth:AuthService) {
+  constructor(private router:Router, private auth:AuthService) {
     this.form = new FormGroup({
       username: new FormControl(''),
       password: new FormControl(''),
@@ -20,17 +20,16 @@ export class LoginpageComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.auth.islogined()) {
-      this.rout.navigate(['/home']);
+    if (this.auth.isLogined()) {
+      this.router.navigate(['/home']);
     }
   }
 
   onSubmit(event: Event): void {
     event.preventDefault();
-    const isAuth:boolean = this.auth.login(this.form?.value);
-    if (isAuth) {
-      this.auth.isLogin$.next(true);
-      this.rout.navigate(['/home']);
+    this.auth.login(this.form?.value);
+    if (this.auth.isLogined()) {
+      this.router.navigate(['/home']);
     }
   }
 }

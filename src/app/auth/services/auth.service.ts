@@ -9,22 +9,20 @@ export const AUTH_KEY = 'AUTH';
   providedIn: 'root',
 })
 export class AuthService {
-  isLogin$ = new BehaviorSubject<boolean>(this.islogined());
+  isLogin$ = new BehaviorSubject<boolean>(this.isLogined());
 
-  username?:string;
+  loginNavigate:string = '/login';
 
   login(user:IUser) {
     if (user) {
       localStorage.setItem(AUTH_KEY, JSON.stringify(Math.random().toString(16)));
       this.isLogin$.next(true);
-      this.username = user.username;
-      return true;
+    } else {
+      localStorage.removeItem(AUTH_KEY);
     }
-    localStorage.removeItem(AUTH_KEY);
-    return false;
   }
 
-  islogined():boolean {
+  isLogined():boolean {
     const key = localStorage.getItem(AUTH_KEY);
     if (key !== null && key.length > 0) return true;
 

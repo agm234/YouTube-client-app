@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ISearchItem } from '../../models/search-item-model';
-import { SortdataService } from '../../services/sortdata.service';
+import { SortDataService } from '../../services/sortdata.service';
 
 @Component({
   selector: 'app-details',
@@ -13,15 +13,15 @@ import { SortdataService } from '../../services/sortdata.service';
 export class DetailsComponent {
   card?:ISearchItem;
 
-  constructor(public routed:ActivatedRoute, private rout:Router, private sortdata:SortdataService) {
+  constructor(public routed:ActivatedRoute, private router:Router, private sortData:SortDataService) {
     this.routed.params.subscribe(({ id }) => {
-      sortdata.getCard(id).subscribe((data) => {
+      this.sortData.getCard(id).subscribe((data) => {
         this.card = data;
       });
     });
   }
 
   navBack() {
-    this.rout.navigate(['home']);
+    this.router.navigate(['home']);
   }
 }

@@ -1,8 +1,6 @@
-import {
-  ChangeDetectionStrategy, Component, EventEmitter, Output,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { SortdataService } from '../../services/sortdata.service';
+import { SortDataService } from '../../services/sortdata.service';
 
 @Component({
   selector: 'app-filters',
@@ -11,32 +9,23 @@ import { SortdataService } from '../../services/sortdata.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FiltersComponent {
-  searchStr = '';
+  searchStr:string = '';
 
-  isDesc:boolean;
+  isDesc:boolean = false;
 
-  search:string;
+  search:string = '';
 
-  showBlock = false;
-
-  constructor(private sortdataService:SortdataService) {
-    this.isDesc = false;
-    this.search = '';
-    this.searchStr = '';
+  constructor(private sortDataService:SortDataService) {
   }
 
   onSort(search:string) {
     this.isDesc = !this.isDesc;
     this.search = search;
-    this.sortdataService.setFilter(this.search, this.isDesc);
+    this.sortDataService.setFilter(this.search, this.isDesc);
   }
 
   onFilter(searchStr:string) {
     this.searchStr = searchStr;
-    this.sortdataService.setSearchStr(this.searchStr);
+    this.sortDataService.setSearchStr(this.searchStr);
   }
-
-  @Output() Filter = new EventEmitter<string>();
-
-  @Output() Sort = new EventEmitter<string>();
 }

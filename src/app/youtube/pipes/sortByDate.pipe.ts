@@ -1,15 +1,11 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 import { ISearchItem } from '../models/search-item-model';
-import { SortdataService } from '../services/sortdata.service';
 
 @Pipe({
   name: 'SortByDate',
 })
 export class SortByDate implements PipeTransform {
-  constructor(private sortdataService:SortdataService) {
-  }
-
   transform(value: ISearchItem[] | null, isDesc:boolean, arg?: string):ISearchItem[] | null {
     if (arg === 'date') {
       this.sort(value, isDesc);

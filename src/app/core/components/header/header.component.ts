@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { SortdataService } from 'src/app/youtube/services/sortdata.service';
+import { SortDataService } from 'src/app/youtube/services/sortdata.service';
 
 @Component({
   selector: 'app-header',
@@ -9,12 +9,11 @@ import { SortdataService } from 'src/app/youtube/services/sortdata.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-  searchCards:string;
+  searchCards:string = '';
 
   showBlock = false;
 
-  constructor(private search:SortdataService) {
-    this.searchCards = '';
+  constructor(private search:SortDataService) {
   }
 
   onFind(searchCards:string) {
