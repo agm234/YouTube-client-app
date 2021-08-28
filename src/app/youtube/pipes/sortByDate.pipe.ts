@@ -8,7 +8,7 @@ import { ISearchItem } from '../models/search-item-model';
 export class SortByDate implements PipeTransform {
   transform(value: ISearchItem[] | null, isDesc:boolean, arg?: string):ISearchItem[] | null {
     if (arg === 'date') {
-      this.sort(value, isDesc);
+      return this.sort(value, isDesc);
     }
     return value;
   }

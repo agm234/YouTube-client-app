@@ -8,7 +8,7 @@ import { ISearchItem } from '../models/search-item-model';
 export class SortByViews implements PipeTransform {
   transform(value: ISearchItem[] | null, isDesc:boolean, arg?: string):ISearchItem[] | null {
     if (arg === 'views') {
-      this.sort(value, isDesc);
+      return this.sort(value, isDesc);
     }
     return value;
   }

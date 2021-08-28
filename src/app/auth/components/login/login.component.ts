@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy, Component, OnDestroy, OnInit,
+} from '@angular/core';
 import { Router } from '@angular/router';
 
 import { BehaviorSubject, Subscription } from 'rxjs';

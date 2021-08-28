@@ -13,6 +13,7 @@ import { SortByDate } from './pipes/sortByDate.pipe';
 import { SortByViews } from './pipes/sortByViews.pipe';
 import { YoutubeRoutingModule } from './youtube-routing.module';
 import { ViewsPipe } from './pipes/views.pipe';
+import { AdminComponent } from './pages/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ViewsPipe } from './pipes/views.pipe';
     NotfoundComponent,
     HomeComponent,
     ViewsPipe,
+    AdminComponent,
   ],
   imports: [
     CommonModule,

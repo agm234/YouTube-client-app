@@ -1,5 +1,5 @@
 <mat-card *ngIf="!!card"   class="example-card">
-    <img mat-card-image class="example-header-image" [src]="card?.snippet?.thumbnails?.medium?.url" alt="img">
+    <img mat-card-image class="example-header-image" [src]="card?.snippet?.thumbnails?.medium?.url || card?.snippet?.thumbnails?.default?.url || 'assets/icons/liked.png'" alt="img">
     <mat-card-content>
         <div class="statistic">
             <div class="statistic_item">

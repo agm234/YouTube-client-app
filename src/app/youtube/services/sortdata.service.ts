@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { API_SEARCH_URL, API_VIDEO_URL } from 'src/app/app.constants';
 
 import { IVideosResponse } from '../models/response-model';
@@ -12,8 +12,6 @@ import { IId, ISearchItem } from '../models/search-item-model';
   providedIn: 'root',
 })
 export class SortDataService {
-  items$ = new BehaviorSubject<ISearchItem[]>([]);
-
   search$ = new Subject<string>();
 
   filter$ = new Subject<string>();
@@ -38,19 +36,6 @@ export class SortDataService {
 
   }
 
-  getCards(str?:string) {
-    this.searchCardsByQuery((str as string || this.globalsearch as string))
-      .subscribe((videoIds: string[]) => this.getStatistics(videoIds)
-        .subscribe(({ items }: IVideosResponse<string>) => {
-          this.items = items;
-          this.items$.next(items);
-        }));
-  }
-
-  getCard(id:string) {
-    return this.getStatistics(id).pipe(switchMap((data:IVideosResponse<string>) => of(data.items[0])));
-  }
-
   searchCardsByQuery(qeury:string) {
     const params: any = {
       type: 'video',
@@ -58,6 +43,7 @@ export class SortDataService {
       maxResults: 15,
       q: qeury,
     };
+
     return this.http.get < IVideosResponse<IId>>(API_SEARCH_URL, { params }).pipe(
       map((data) => data.items.map(({ id }) => id.videoId)),
     );
@@ -69,7 +55,6 @@ export class SortDataService {
       id,
       part: 'snippet,statistics',
     };
-
     return this.http.get(API_VIDEO_URL, { params });
   }
 
