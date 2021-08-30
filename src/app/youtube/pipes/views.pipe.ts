@@ -10,17 +10,17 @@ export class ViewsPipe implements PipeTransform {
   }
 
   convertNumber(number:number) {
-    if (Math.abs(number) > 1000000000) {
-      const value = (number / 1000000000).toFixed(1);
-      return `${String(value)}b`;
+    if (Math.abs(number) > 1_000_000_000) {
+      const value = (number / 1_000_000_000).toFixed(1);
+      return `${value}b`;
     }
-    if (Math.abs(number) > 1000000) {
-      const value = (number / 1000000).toFixed(1);
-      return `${String(value)}m`;
+    if (Math.abs(number) > 1_000_000) {
+      const value = (number / 1_000_000).toFixed(1);
+      return `${value}m`;
     }
-    if (Math.abs(number) > 1000) {
-      const value = (number / 1000).toFixed(1);
-      return `${String(value)}k`;
+    if (Math.abs(number) > 1_000) {
+      const value = (number / 1_000).toFixed(1);
+      return `${value}k`;
     }
     return String(number);
   }

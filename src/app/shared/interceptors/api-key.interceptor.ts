@@ -4,7 +4,8 @@ import {
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
-import { API_KEY } from 'src/app/app.constants';
+
+import { API_KEY } from '../../../environments/environment';
 
 @Injectable()
 export class ApiKeyInterceptor implements HttpInterceptor {

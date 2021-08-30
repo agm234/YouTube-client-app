@@ -9,11 +9,11 @@ import { SortDataService } from '../../services/sortdata.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FiltersComponent {
-  searchStr:string = '';
+  searchStr = '';
 
-  isDesc:boolean = false;
+  isDesc = false;
 
-  search:string = '';
+  search = '';
 
   constructor(private sortDataService:SortDataService) {
   }

@@ -11,7 +11,7 @@ export const AUTH_KEY = 'AUTH';
 export class AuthService {
   isLogin$ = new BehaviorSubject<boolean>(this.isLogined());
 
-  loginNavigate:string = '/login';
+  loginNavigate = '/login';
 
   login(user:IUser) {
     if (user) {
@@ -24,9 +24,7 @@ export class AuthService {
 
   isLogined():boolean {
     const key = localStorage.getItem(AUTH_KEY);
-    if (key !== null && key.length > 0) return true;
-
-    return false;
+    return key !== null && key.length > 0;
   }
 
   logout() {

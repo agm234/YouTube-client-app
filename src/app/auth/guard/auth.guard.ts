@@ -9,7 +9,7 @@ import { AuthService } from '../services/auth.service';
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  login:string = this.auth.loginNavigate;
+  login = this.auth.loginNavigate;
 
   constructor(private router:Router, private auth:AuthService) {
 

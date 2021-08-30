@@ -6,7 +6,7 @@ import {
   selector: '[appCardMarkerColor]',
 })
 export class CardMarkerColorDirective implements OnInit {
-  colorClass:string = '';
+  colorClass = '';
 
   @Input() date?:string;
 

@@ -15,7 +15,7 @@ export class SearchItemComponent {
   constructor(private router:Router) {
   }
 
-  nav(id:string) {
+  navigateToDetails(id:string) {
     this.router.navigate(['details', id]);
   }
 }

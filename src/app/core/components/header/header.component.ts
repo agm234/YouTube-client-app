@@ -17,15 +17,15 @@ import { SortDataService } from 'src/app/youtube/services/sortdata.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent implements OnDestroy, OnInit {
-  searchCards:string = '';
+  searchCards = '';
 
-  isLogined:boolean = false;
+  isLogined = false;
 
   subscription?:Subscription;
 
   showBlock = false;
 
-  constructor(private search:SortDataService, private store:Store<AppState>, private router:Router, private auth:AuthService) {
+  constructor(private sortDataService:SortDataService, private store:Store<AppState>, private router:Router, private auth:AuthService) {
   }
 
   onFind(searchCards:string) {
@@ -33,7 +33,7 @@ export class HeaderComponent implements OnDestroy, OnInit {
       return;
     }
     if (searchCards.length > 3) {
-      this.search.setStr(searchCards);
+      this.sortDataService.setStr(searchCards);
       this.store.dispatch(searchStr({ payload: searchCards }));
     }
   }

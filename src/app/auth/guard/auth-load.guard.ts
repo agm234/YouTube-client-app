@@ -9,7 +9,7 @@ import { AuthService } from '../services/auth.service';
   providedIn: 'root',
 })
 export class AuthLoadGuard implements CanLoad {
-  login:string = this.auth.loginNavigate;
+  login = this.auth.loginNavigate;
 
   constructor(private router:Router, private auth:AuthService) {
   }

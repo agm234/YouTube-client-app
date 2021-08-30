@@ -24,7 +24,7 @@
         </div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button class="card_btn" (click)="nav(card.id)">more...</button>
+      <button mat-raised-button class="card_btn" (click)="navigateToDetails(card.id)">more...</button>
     </mat-card-actions>
     <div appCardMarkerColor [date]="card.snippet.publishedAt" class="indicator"></div>
   </mat-card>

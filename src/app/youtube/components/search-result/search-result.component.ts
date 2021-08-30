@@ -18,17 +18,13 @@ import { SortDataService } from '../../services/sortdata.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchResultComponent implements OnInit, OnDestroy {
-  isDesc: boolean = false;
+  isDesc = false;
 
-  filter: string = '';
+  filter = '';
 
-  searchStr: string = '';
+  searchStr = '';
 
-  filterSubscription?:Subscription;
-
-  isDescSubscription?:Subscription;
-
-  searchStrSubscription?:Subscription;
+  private subs: Subscription = new Subscription();
 
   cards$?: Observable<ISearchItem[]>;
 
@@ -37,28 +33,20 @@ export class SearchResultComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.filterSubscription = this.sortDataService.filter$.subscribe((data) => {
+    this.subs.add(this.sortDataService.filter$.subscribe((data) => {
       this.filter = data;
       this.store.dispatch(getCards());
-    });
-    this.isDescSubscription = this.sortDataService.isDesc$.subscribe((data) => {
+    }));
+    this.subs.add(this.sortDataService.isDesc$.subscribe((data) => {
       this.isDesc = data;
-    });
-    this.searchStrSubscription = this.sortDataService.searchStr$.subscribe((data) => {
+    }));
+    this.subs.add(this.sortDataService.searchStr$.subscribe((data) => {
       this.searchStr = data;
       this.store.dispatch(getCards());
-    });
+    }));
   }
 
   ngOnDestroy(): void {
-    if (this.filterSubscription) {
-      this.filterSubscription.unsubscribe();
-    }
-    if (this.isDescSubscription) {
-      this.isDescSubscription.unsubscribe();
-    }
-    if (this.isDescSubscription) {
-      this.isDescSubscription.unsubscribe();
-    }
+    this.subs.unsubscribe();
   }
 }

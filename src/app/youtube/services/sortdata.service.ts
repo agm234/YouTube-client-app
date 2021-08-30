@@ -26,7 +26,7 @@ export class SortDataService {
 
   globalsearch?:string;
 
-  isDesc:boolean = false;
+  isDesc = false;
 
   videos ?:ISearchItem[];
 
