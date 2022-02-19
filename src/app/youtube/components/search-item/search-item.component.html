@@ -1,22 +1,18 @@
 <mat-card *ngIf="!!card"   class="example-card">
-    <img mat-card-image class="example-header-image" [src]="card?.snippet?.thumbnails?.medium?.url || card?.snippet?.thumbnails?.default?.url || 'assets/icons/liked.png'" alt="img">
+    <img mat-card-image class="example-header-image" [src]="card?.snippet?.thumbnails?.medium?.url || card?.snippet?.thumbnails?.default?.url || 'assets/icons/noFoto.png'" alt="img">
     <mat-card-content>
         <div class="statistic">
             <div class="statistic_item">
                 <img src="assets/icons/viewed.png" alt="viewed">
-                <span >{{card?.statistics?.viewCount | views}}</span>
+                <span > {{card?.statistics?.viewCount | views}}</span>
             </div>
             <div class="statistic_item">
                 <img src="assets/icons/liked.png" alt="liked">
-                <span >{{card?.statistics?.likeCount|views}}</span>
-            </div>
-            <div class="statistic_item">
-                <img src="assets/icons/dislike.png" alt="dislike">
-                <span >{{card?.statistics?.dislikeCount|views}}</span>
+                <span > {{card?.statistics?.likeCount|views}}</span>
             </div>
             <div class="statistic_item">
                 <img src="assets/icons/comment.png" alt="comment">
-                <span >{{card?.statistics?.commentCount|views}}</span>
+                <span > {{card?.statistics?.commentCount|views}}</span>
             </div>
         </div>
         <div class="card_title">

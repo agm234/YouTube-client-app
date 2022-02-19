@@ -42,6 +42,10 @@ export class HeaderComponent implements OnDestroy, OnInit {
     this.router.navigate(['admin']);
   }
 
+  onNavmain() {
+    this.router.navigate(['']);
+  }
+
   ngOnInit() {
     this.subscription = this.auth.isLogin$.subscribe((data) => {
       this.isLogined = data;

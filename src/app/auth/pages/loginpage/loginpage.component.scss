@@ -1,4 +1,10 @@
 :host {
+    min-width: 862px;
+    height: 100%;
+    display: block;
+    position: relative;
+}
+.login-page {
     display: flex;
     flex-direction: column;
     justify-content: center;

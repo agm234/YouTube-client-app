@@ -16,6 +16,8 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent implements OnInit, OnDestroy {
   isLogined? = new BehaviorSubject<boolean>(false);
 
+  username? = new BehaviorSubject<string>('Your Name');
+
   subscription?:Subscription;
 
   constructor(private router:Router, private auth:AuthService) {
@@ -24,6 +26,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscription = this.auth.isLogin$.subscribe((data) => {
       this.isLogined?.next(data);
+    });
+    this.subscription = this.auth.username$.subscribe((data) => {
+      this.username?.next(data);
     });
   }
 

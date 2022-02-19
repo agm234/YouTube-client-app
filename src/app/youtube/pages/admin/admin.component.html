@@ -1,25 +1,28 @@
-<div class="admin-form-name">Create new card</div>
+<div class="admin-page">
+    <div class="admin-form-name">Create new card</div>
 
-<form [formGroup]="form" (submit)="onSubmit($event)">
-  <div class="admin-form-field">
-    <label class="label">Title</label>
-    <input class="input" formControlName="title" type="text"/>
-  </div>
+    <form [formGroup]="form" (submit)="onSubmit($event)">
+      <div class="admin-form-field">
+        <label class="label">Title</label>
+        <input class="input" formControlName="title" type="text"/>
+      </div>
 
-  <div class="admin-form-field">
-    <label class="label" >Discription</label>
-    <input class="input" formControlName="description" type="text"/>
-  </div>
+      <div class="admin-form-field">
+        <label class="label" >Discription</label>
+        <input class="input" formControlName="description" type="text"/>
+      </div>
 
-  <div class="admin-form-field">
-    <label class="label" >Img</label>
-    <input class="input" formControlName="imageUrl" type="text"/>
-  </div>
+      <div class="admin-form-field">
+        <label class="label" >Img</label>
+        <input class="input" formControlName="imageUrl" type="text"/>
+      </div>
 
-  <div class="admin-form-field">
-    <label class="label" >Link Video</label>
-    <input class="input" formControlName="videolink" type="text"/>
-  </div>
+      <div class="admin-form-field">
+        <label class="label" >Link Video</label>
+        <input class="input" formControlName="videolink" type="text"/>
+      </div>
 
-  <button  class="button"  type="submit">Create card</button>
-</form>
+      <button  class="button"  type="submit">Create card</button>
+    </form>
+
+</div>

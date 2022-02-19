@@ -29,12 +29,13 @@
     padding-top: 20px;
 }
 .statistic {
-    width: 240px;
+    width: 180px;
     height: 13px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin: 0 auto;
 }
 .statistic_item span {
     height: 13px;
@@ -58,8 +59,7 @@
     font-weight: bold;
     font-size: 16px;
     line-height: 20px;
-    text-align: right;
-    color: #4f4f4f;
+    text-align: center;
 }
 .mat-card-actions {
     width: 223px;

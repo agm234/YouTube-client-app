@@ -1,6 +1,6 @@
 <div class="card-details">
     <div class="card-details-img">
-      <img [src]="card?.snippet?.thumbnails?.standard?.url || card?.snippet?.thumbnails?.default?.url " />
+      <img [src]="card?.snippet?.thumbnails?.standard?.url || card?.snippet?.thumbnails?.default?.url || 'assets/icons/noFoto.png'" />
 
       <div (click)="navBack()" class="card-details-back">
         <img src="../../../../assets/icons/back_button.png" />
@@ -23,10 +23,6 @@
         <div class="card-details-statistic-card">
           <img class="card-details-statistic__icon" src="../../../../assets/icons/liked.png" />
           <span class="card-details-statistic__value">{{card?.statistics?.likeCount|views}}</span>
-        </div>
-        <div class="ccard-details-statistic-card">
-          <img class="card-details-statistic__icon" src="../../../../assets/icons/dislike.png" />
-          <span class="card-details-statistic__value">{{card?.statistics?.dislikeCount|views}}</span>
         </div>
         <div class="card-details-statistic-card">
           <img class="card-details-statistic__icon" src="../../../../assets/icons/comment.png" />
