@@ -1,0 +1,12 @@
+<div class="wrapper">
+    <div class="header_main">
+        <img class="header_logo" (click)="onNavmain()" src="assets/icons/logo.png" alt="logo">
+        <app-search-bar (find)="onFind($event)"></app-search-bar>
+        <button class="search_btn" (click)="showBlock=!showBlock"><img   src="assets/icons/search_settings.png" alt="search"></button>
+    </div>
+    <app-login></app-login>
+    <button  mat-raised-button class="button" *ngIf="isLogined" (click)="onCreate()">Create card</button>
+</div>
+<app-filters *ngIf="showBlock"></app-filters>
+
+

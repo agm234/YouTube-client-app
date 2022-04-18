@@ -1,0 +1,11 @@
+<div class="serch-result-list" *ngIf="(cards$| async)?.length; else noVideos">
+    <app-search-item   *ngFor="let card of cards$| async | SearchPipe :searchStr | SortByViews : isDesc : filter | SortByDate : isDesc : filter "  [card]="card"></app-search-item>
+
+</div>
+<ng-template #noVideos>
+    <div class="serch-result-list">
+        <p class="container">Search to find some videos</p>
+    </div>
+  </ng-template>
+
+

@@ -1,0 +1,49 @@
+:host {
+    display: flex;
+    align-self: center;
+    width: 230px;
+}
+.wrapper_login {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: 134px;
+    height: 24px;
+    cursor: pointer;
+    margin-top: 4px;
+}
+.name {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: right;
+    color: #4f4f4f;
+    margin-right: 8px;
+    cursor: default;
+    cursor: pointer;
+}
+.button {
+    background: #4893f7;
+    border: 0;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    width: 80px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    position: absolute;
+    top: -0px;
+    left: 0;
+}
+.logn-btns {
+    width: 100px;
+    height: 30px;
+    margin-left: 5px;
+    position: relative;
+}

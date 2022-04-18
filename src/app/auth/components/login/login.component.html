@@ -1,0 +1,8 @@
+<div class="wrapper_login">
+    <p class="name">{{username|async}}</p>
+    <img src="assets/icons/Subtract.png" alt="">
+</div>
+<div class="logn-btns">
+    <button mat-raised-button class="button" *ngIf="(isLogined |async)===false" (click)="onLogin()">LogIn</button>
+    <button  mat-raised-button class="button" *ngIf="isLogined |async" (click)="onLogout()">LogOut</button>
+</div>

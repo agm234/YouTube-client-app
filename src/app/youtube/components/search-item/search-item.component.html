@@ -1,0 +1,26 @@
+<mat-card *ngIf="!!card"   class="example-card">
+    <img mat-card-image class="example-header-image" [src]="card?.snippet?.thumbnails?.medium?.url || card?.snippet?.thumbnails?.default?.url || 'assets/icons/noFoto.png'" alt="img">
+    <mat-card-content>
+        <div class="statistic">
+            <div class="statistic_item">
+                <img src="assets/icons/viewed.png" alt="viewed">
+                <span > {{card?.statistics?.viewCount | views}}</span>
+            </div>
+            <div class="statistic_item">
+                <img src="assets/icons/liked.png" alt="liked">
+                <span > {{card?.statistics?.likeCount|views}}</span>
+            </div>
+            <div class="statistic_item">
+                <img src="assets/icons/comment.png" alt="comment">
+                <span > {{card?.statistics?.commentCount|views}}</span>
+            </div>
+        </div>
+        <div class="card_title">
+            <p>{{card?.snippet?.title}}</p>
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button class="card_btn" (click)="navigateToDetails(card.id)">more...</button>
+    </mat-card-actions>
+    <div appCardMarkerColor [date]="card.snippet.publishedAt" class="indicator"></div>
+  </mat-card>
